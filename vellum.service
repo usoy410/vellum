@@ -1,0 +1,11 @@
+[Unit]
+Description=Vellum HTML Wallpaper Runner
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/vellum
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target

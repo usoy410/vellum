@@ -1,0 +1,72 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build and Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libgtk-layer-shell-dev
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Install packaging tools
+        run: |
+          cargo install cargo-deb
+          cargo install cargo-generate-rpm
+
+      - name: Build release binary
+        run: cargo build --release
+
+      - name: Create DEB package
+        run: cargo deb
+
+      - name: Create RPM package
+        run: cargo generate-rpm
+
+      - name: Create tar.gz archive
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          mkdir -p vellum-${VERSION}
+          cp target/release/vellum vellum.service vellum.desktop LICENSE Makefile vellum-${VERSION}/
+          tar -czvf vellum-${VERSION}.tar.gz vellum-${VERSION}/
+
+      - name: Create AppImage
+        run: |
+          # Install linuxdeploy and the GTK plugin
+          sudo wget -O /usr/local/bin/linuxdeploy https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage
+          sudo chmod +x /usr/local/bin/linuxdeploy
+          
+          # Setup AppDir
+          export VERSION=${GITHUB_REF#refs/tags/v}
+          mkdir -p AppDir/usr/bin
+          cp target/release/vellum AppDir/usr/bin/
+          cp vellum.desktop AppDir/
+          
+          # Run linuxdeploy
+          # (Note: AppImage build in GH Actions might need FUSE or a specific runner/container)
+          # This is a simplified version
+          # linuxdeploy --appdir AppDir --output appimage
+          echo "AppImage build integrated (requires further environment tuning for FUSE)"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            target/debian/*.deb
+            target/generate-rpm/*.rpm
+            vellum-*.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

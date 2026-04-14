@@ -3,6 +3,14 @@ use webkit2gtk::{WebViewExt, SettingsExt};
 use gtk_layer_shell::LayerShell;
 use gdk::RGBA;
 use std::process::Command;
+use std::os::unix::net::{UnixListener, UnixStream};
+use std::io::{Read, Write};
+use std::thread;
+
+fn get_socket_path() -> String {
+    let uid = unsafe { libc::getuid() };
+    format!("/run/user/{}/vellum.sock", uid)
+}
 
 fn kill_competitors() {
     let runners = [
@@ -19,7 +27,33 @@ fn kill_competitors() {
     }
 }
 
+fn run_client(url: String) -> Result<(), Box<dyn std::error::Error>> {
+    let socket_path = get_socket_path();
+    let mut stream = UnixStream::connect(socket_path)?;
+    stream.write_all(url.as_bytes())?;
+    Ok(())
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let args: Vec<String> = std::env::args().collect();
+
+    // Check for "set" command
+    if args.len() >= 3 && args[1] == "set" {
+        let path_str = &args[2];
+        let url = if path_str.starts_with("http") {
+            path_str.clone()
+        } else {
+            let path = std::path::Path::new(path_str).canonicalize()?;
+            format!("file://{}", path.to_str().unwrap())
+        };
+        return run_client(url);
+    }
+
+    // Default to daemon mode
+    run_daemon(args)
+}
+
+fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     // Terminate competing runners first
     kill_competitors();
 
@@ -60,41 +94,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     window.set_app_paintable(true);
     window.set_decorated(false); // No borders or title bar
 
-    // Get the path/URL from arguments
-    let args: Vec<String> = std::env::args().collect();
-    let mut config_path = None;
-    
-    let mut i = 1;
-    while i < args.len() {
-        match args[i].as_str() {
-            "-c" | "--config" => {
-                if i + 1 < args.len() {
-                    config_path = Some(args[i+1].clone());
-                    i += 1;
-                }
-            }
-            _ => {
-                if config_path.is_none() && !args[i].starts_with('-') {
-                    config_path = Some(args[i].clone());
-                }
-            }
-        }
-        i += 1;
-    }
-
-    let url = if let Some(path_str) = config_path {
-        if path_str.starts_with("http") {
-            path_str
-        } else {
-            let path = std::path::Path::new(&path_str).canonicalize()?;
-            format!("file://{}", path.to_str().unwrap())
-        }
-    } else {
-        eprintln!("Vellum: A web-based wallpaper runner.");
-        eprintln!("Usage: vellum -c <path_to_html_or_url>");
-        std::process::exit(1);
-    };
-
     // Create and configure WebKit WebView
     let webview = webkit2gtk::WebView::new();
     
@@ -112,8 +111,60 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Set transparent background
     webview.set_background_color(&RGBA::new(0.0, 0.0, 0.0, 0.0));
     
-    // Load the target URL
-    webview.load_uri(&url);
+    // Get initial URL if provided
+    let mut config_path = None;
+    let mut i = 1;
+    while i < args.len() {
+        match args[i].as_str() {
+            "-c" | "--config" => {
+                if i + 1 < args.len() {
+                    config_path = Some(args[i+1].clone());
+                    i += 1;
+                }
+            }
+            "daemon" => {} // Ignore daemon command
+            _ => {
+                if config_path.is_none() && !args[i].starts_with('-') {
+                    config_path = Some(args[i].clone());
+                }
+            }
+        }
+        i += 1;
+    }
+
+    if let Some(path_str) = config_path {
+        let url = if path_str.starts_with("http") {
+            path_str
+        } else {
+            let path = std::path::Path::new(&path_str).canonicalize()?;
+            format!("file://{}", path.to_str().unwrap())
+        };
+        webview.load_uri(&url);
+    }
+
+    // Setup IPC Listener
+    let socket_path = get_socket_path();
+    let _ = std::fs::remove_file(&socket_path); // Remove old socket if exists
+    let listener = UnixListener::bind(&socket_path)?;
+
+    let (tx, rx) = glib::MainContext::channel(glib::Priority::default());
+    
+    thread::spawn(move || {
+        for stream in listener.incoming() {
+            if let Ok(mut stream) = stream {
+                let mut buffer = String::new();
+                if stream.read_to_string(&mut buffer).is_ok() {
+                    let _ = tx.send(buffer);
+                }
+            }
+        }
+    });
+
+    let webview_clone = webview.clone();
+    rx.attach(None, move |url| {
+        webview_clone.load_uri(&url);
+        glib::ControlFlow::Continue
+    });
 
     // Add webview to window
     window.add(&webview);

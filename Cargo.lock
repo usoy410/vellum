@@ -848,6 +848,7 @@ dependencies = [
  "glib",
  "gtk",
  "gtk-layer-shell",
+ "libc",
  "webkit2gtk",
 ]
 
