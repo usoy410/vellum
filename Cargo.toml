@@ -1,0 +1,15 @@
+[package]
+name = "vellum"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "vellum"
+path = "src/main.rs"
+
+[dependencies]
+gtk = { version = "0.18", features = ["v3_24"] }
+webkit2gtk = { version = "2.0", features = ["v2_28"] }
+gtk-layer-shell = { version = "0.8", features = ["v0_6"] }
+gdk = "0.18"
+glib = "0.18"
