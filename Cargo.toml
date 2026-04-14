@@ -2,6 +2,10 @@
 name = "vellum"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "A lightweight HTML wallpaper runner for Linux"
+homepage = "https://github.com/usoy410/vellum"
+repository = "https://github.com/usoy410/vellum"
 
 [[bin]]
 name = "vellum"
