@@ -38,7 +38,7 @@ chmod +x vellum-*.AppImage
 ```bash
 tar -xzvf vellum-*.tar.gz
 cd vellum-*
-./setup.sh
+make user-install
 ```
 
 ## 📦 Distribution

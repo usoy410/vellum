@@ -39,7 +39,7 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/v}
           mkdir -p vellum-${VERSION}
-          cp target/release/vellum vellum.service vellum.desktop LICENSE Makefile vellum-${VERSION}/
+          cp target/release/vellum assets/vellum.service assets/vellum.desktop LICENSE Makefile vellum-${VERSION}/
           tar -czvf vellum-${VERSION}.tar.gz vellum-${VERSION}/
 
       - name: Create AppImage
@@ -52,7 +52,7 @@ jobs:
           export VERSION=${GITHUB_REF#refs/tags/v}
           mkdir -p AppDir/usr/bin
           cp target/release/vellum AppDir/usr/bin/
-          cp vellum.desktop AppDir/
+          cp assets/vellum.desktop AppDir/
           
           # Run linuxdeploy
           # (Note: AppImage build in GH Actions might need FUSE or a specific runner/container)

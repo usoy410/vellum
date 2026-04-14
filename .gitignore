@@ -1,5 +1,13 @@
-
+# Rust artifacts
 /target
-setup.sh
-target/release/vellum
-target/release/vellum.d
+
+# Release artifacts
+/AppDir
+/vellum-*
+*.tar.gz
+*.deb
+*.rpm
+*.AppImage
+
+# OS-specific files
+.DS_Store

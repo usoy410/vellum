@@ -24,15 +24,15 @@ section = "utility"
 priority = "optional"
 assets = [
     ["target/release/vellum", "usr/bin/vellum", "755"],
-    ["vellum.service", "usr/lib/systemd/user/vellum.service", "644"],
-    ["vellum.desktop", "etc/xdg/autostart/vellum.desktop", "644"],
+    ["assets/vellum.service", "usr/lib/systemd/user/vellum.service", "644"],
+    ["assets/vellum.desktop", "etc/xdg/autostart/vellum.desktop", "644"],
 ]
 
 [package.metadata.generate-rpm]
 assets = [
     { source = "target/release/vellum", dest = "/usr/bin/vellum", mode = "755" },
-    { source = "vellum.service", dest = "/usr/lib/systemd/user/vellum.service", mode = "644" },
-    { source = "vellum.desktop", dest = "/etc/xdg/autostart/vellum.desktop", mode = "644" },
+    { source = "assets/vellum.service", dest = "/usr/lib/systemd/user/vellum.service", mode = "644" },
+    { source = "assets/vellum.desktop", dest = "/etc/xdg/autostart/vellum.desktop", mode = "644" },
 ]
 # RPM dependencies are often named differently, adjust as needed for common distros
 # build-depends = ["gtk3-devel", "webkit2gtk3-devel", "gtk-layer-shell-devel"]
