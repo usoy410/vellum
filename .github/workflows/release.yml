@@ -36,8 +36,7 @@ jobs:
         run: |
           # Use cargo-binstall or manual download to avoid long cargo installs
           curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
-          cargo binstall --strategies quick --release-url-template "https://github.com/cargo-bins/cargo-deb/releases/download/{version}/cargo-deb-{version}-x86_64-unknown-linux-musl.tar.gz" -y cargo-deb
-          cargo binstall -y cargo-generate-rpm
+          cargo binstall -y cargo-deb cargo-generate-rpm
 
       - name: Build release binary
         run: cargo build --release
