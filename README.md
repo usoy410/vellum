@@ -87,10 +87,27 @@ vellum refresh -c
 vellum refresh ~/htmlwall/index.html
 ```
 
+### Autostart on Reboot / Relogin & Persistence
+Vellum automatically remembers your last set wallpaper across reboots and relogins. When the background service starts up, it restores your active wallpaper automatically so you never have to re-apply it manually.
+
+You can configure automatic startup using either `systemctl` or the built-in `autostart` command:
+```bash
+# Enable automatic startup on reboot/relogin
+vellum autostart enable
+
+# Check current status and active wallpaper
+vellum status
+vellum autostart status
+
+# Disable automatic startup
+vellum autostart disable
+```
+
 ### Help & Options
 ```bash
 vellum --help     # Display CLI help anytime (even if another instance is running)
 vellum --version  # Display version information
+vellum status     # Display daemon status, autostart, and active wallpaper
 ```
 
 Vellum is released under the [MIT License](LICENSE).

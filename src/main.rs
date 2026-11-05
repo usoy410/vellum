@@ -20,27 +20,75 @@ USAGE:
     vellum <COMMAND> [ARGS]
 
 COMMANDS:
-    set [-c|--cache] <PATH_OR_URL>    Set wallpaper to local HTML file or web URL
+    set [-c|--cache] <PATH_OR_URL>     Set wallpaper to local HTML file or web URL
     refresh, reload [-c] [PATH_OR_URL] Reload wallpaper and bypass cache to show latest changes
-    restart                           Restart the Vellum wallpaper service / daemon
-    daemon [PATH_OR_URL]              Run Vellum wallpaper runner in daemon mode
-    help                              Print this help message
+    restart                            Restart the Vellum wallpaper service / daemon
+    autostart [enable|disable|status]  Configure automatic startup on reboot/relogin
+    status                             Display daemon running status and active wallpaper
+    daemon [PATH_OR_URL]               Run Vellum wallpaper runner in daemon mode
+    help                               Print this help message
 
 OPTIONS:
-    -r, --refresh                     Reload current wallpaper bypassing cache
-    -c, --cache, --clear-cache        Bypass and clear WebKit cache (used with refresh/set)
-    --config <PATH>                   Path to HTML wallpaper file or URL (daemon mode)
-    -v, --version                     Print version information
-    -h, --help                        Print help information
+    -r, --refresh                      Reload current wallpaper bypassing cache
+    -c, --cache, --clear-cache         Bypass and clear WebKit cache (used with refresh/set)
+    --config <PATH>                    Path to HTML wallpaper file or URL (daemon mode)
+    -v, --version                      Print version information
+    -h, --help                         Print help information
 
 EXAMPLES:
-    vellum ~/htmlwall/index.html      Set wallpaper (updates running instance, or starts daemon)
-    vellum refresh                    Reload wallpaper bypassing cache to see HTML/CSS/JS edits
-    vellum refresh -c                 Reload wallpaper and explicitly purge WebKit cache
-    vellum set ~/wallpapers/bg.html   Set wallpaper on running instance
-    vellum restart                    Restart Vellum service",
+    vellum ~/htmlwall/index.html       Set wallpaper (updates running instance, or starts daemon)
+    vellum refresh                     Reload wallpaper bypassing cache to see HTML/CSS/JS edits
+    vellum refresh -c                  Reload wallpaper and explicitly purge WebKit cache
+    vellum autostart enable            Ensure Vellum auto-starts after reboot/relogin
+    vellum status                      Show running daemon info and active wallpaper
+    vellum restart                     Restart Vellum background service",
         version = env!("CARGO_PKG_VERSION")
     );
+}
+
+/// Returns the state directory path for Vellum, respecting `$XDG_STATE_HOME`.
+fn state_dir() -> std::path::PathBuf {
+    if let Some(state) = std::env::var_os("XDG_STATE_HOME") {
+        std::path::PathBuf::from(state).join("vellum")
+    } else if let Some(home) = std::env::var_os("HOME") {
+        std::path::PathBuf::from(home).join(".local/state/vellum")
+    } else {
+        std::path::PathBuf::from("/tmp/vellum-state")
+    }
+}
+
+/// Returns the file path where the last active wallpaper URL is stored.
+fn last_wallpaper_path() -> std::path::PathBuf {
+    state_dir().join("last_wallpaper")
+}
+
+/// Persists the active wallpaper URL to disk so that it automatically restores after reboot or relogin.
+fn save_last_wallpaper(url: &str) {
+    let path = last_wallpaper_path();
+    if let Some(parent) = path.parent() {
+        let _ = std::fs::create_dir_all(parent);
+    }
+    let _ = std::fs::write(&path, url.trim().as_bytes());
+}
+
+/// Loads the last persisted wallpaper URL from storage.
+///
+/// Returns `None` if no wallpaper was previously recorded or if the referenced file no longer exists.
+fn load_last_wallpaper() -> Option<String> {
+    let path = last_wallpaper_path();
+    let content = std::fs::read_to_string(&path).ok()?;
+    let url = content.trim().to_string();
+    if url.is_empty() {
+        return None;
+    }
+
+    if let Some(file_path) = url.strip_prefix("file://") {
+        if !std::path::Path::new(file_path).exists() {
+            return None;
+        }
+    }
+
+    Some(url)
 }
 
 /// Resolves a file path or URL into a fully-qualified URL string.
@@ -226,6 +274,121 @@ fn handle_restart() -> Result<(), Box<dyn std::error::Error>> {
     std::process::exit(1);
 }
 
+/// Reports the daemon status, persistent wallpaper, and startup state.
+fn handle_status() -> Result<(), Box<dyn std::error::Error>> {
+    let running = ipc::is_daemon_running();
+    println!("Vellum Status:");
+    println!(
+        "  Daemon:    {}",
+        if running {
+            "Active (running)"
+        } else {
+            "Inactive (stopped)"
+        }
+    );
+
+    if let Some(last) = load_last_wallpaper() {
+        println!("  Wallpaper: {}", last);
+    } else {
+        println!("  Wallpaper: None recorded");
+    }
+
+    let is_enabled = std::process::Command::new("systemctl")
+        .args(["--user", "is-enabled", "--quiet", "vellum.service"])
+        .status()
+        .map(|s| s.success())
+        .unwrap_or(false);
+
+    let autostart_desktop = std::env::var_os("HOME")
+        .map(|h| std::path::PathBuf::from(h).join(".config/autostart/vellum.desktop"))
+        .map(|p| p.exists())
+        .unwrap_or(false);
+
+    println!(
+        "  Autostart: {}",
+        if is_enabled || autostart_desktop {
+            "Enabled (starts automatically on boot/relogin)"
+        } else {
+            "Disabled"
+        }
+    );
+
+    Ok(())
+}
+
+/// Configures automatic startup across systemd and XDG desktop autostart.
+fn handle_autostart(args: &[String]) -> Result<(), Box<dyn std::error::Error>> {
+    let mode = args.first().map(|s| s.as_str()).unwrap_or("status");
+
+    match mode {
+        "on" | "enable" | "--enable" => {
+            let _ = std::process::Command::new("systemctl")
+                .args(["--user", "daemon-reload"])
+                .status();
+            let _ = std::process::Command::new("systemctl")
+                .args(["--user", "enable", "vellum.service"])
+                .status();
+
+            if let Some(home) = std::env::var_os("HOME") {
+                let autostart_dir = std::path::PathBuf::from(home).join(".config/autostart");
+                let _ = std::fs::create_dir_all(&autostart_dir);
+                let desktop_file = autostart_dir.join("vellum.desktop");
+                let exe = std::env::current_exe()
+                    .unwrap_or_else(|_| std::path::PathBuf::from("/usr/bin/vellum"));
+                let desktop_entry = format!(
+                    "[Desktop Entry]\nType=Application\nName=Vellum\nComment=HTML Wallpaper Runner\nExec={}\nTerminal=false\nCategories=Utility;\nX-GNOME-Autostart-Phase=Desktop\n",
+                    exe.display()
+                );
+                let _ = std::fs::write(&desktop_file, desktop_entry);
+            }
+
+            println!("Vellum autostart enabled.");
+            println!("Vellum will start automatically on reboot and relogin with the last active wallpaper.");
+        }
+        "off" | "disable" | "--disable" => {
+            let _ = std::process::Command::new("systemctl")
+                .args(["--user", "disable", "vellum.service"])
+                .status();
+
+            if let Some(home) = std::env::var_os("HOME") {
+                let desktop_file =
+                    std::path::PathBuf::from(home).join(".config/autostart/vellum.desktop");
+                let _ = std::fs::remove_file(desktop_file);
+            }
+
+            println!("Vellum autostart disabled.");
+        }
+        "status" | "--status" => {
+            let is_enabled = std::process::Command::new("systemctl")
+                .args(["--user", "is-enabled", "--quiet", "vellum.service"])
+                .status()
+                .map(|s| s.success())
+                .unwrap_or(false);
+
+            let autostart_desktop = std::env::var_os("HOME")
+                .map(|h| std::path::PathBuf::from(h).join(".config/autostart/vellum.desktop"))
+                .map(|p| p.exists())
+                .unwrap_or(false);
+
+            println!(
+                "Autostart: {}",
+                if is_enabled || autostart_desktop {
+                    "Enabled (starts automatically on boot/relogin)"
+                } else {
+                    "Disabled"
+                }
+            );
+        }
+        _ => {
+            eprintln!("Unknown autostart argument: {}", mode);
+            eprintln!("Usage: vellum autostart [enable|disable|status]");
+            std::process::exit(1);
+        }
+    }
+
+    Ok(())
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = std::env::args().collect();
 
@@ -245,6 +408,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
         "refresh" | "reload" | "-r" | "--refresh" => handle_refresh(&args[2..]),
         "restart" => handle_restart(),
+        "status" => handle_status(),
+        "autostart" => handle_autostart(&args[2..]),
         "set" => handle_set(&args[2..]),
         "daemon" => run_daemon(args),
         _ => {
@@ -286,11 +451,8 @@ fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     let (_socket_owner, listener) = match ipc::SocketOwner::bind(&ipc::socket_path()) {
         Ok(bound) => bound,
         Err(e) if e.kind() == std::io::ErrorKind::AddrInUse => {
-            eprintln!("Error: Another Vellum instance is already running.");
-            eprintln!(
-                "Use 'vellum --help' for options, 'vellum <path>' to set wallpaper, or 'vellum refresh' to reload."
-            );
-            std::process::exit(1);
+            println!("Vellum instance is already running.");
+            return Ok(());
         }
         Err(e) => return Err(e.into()),
     };
@@ -365,11 +527,16 @@ fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
         i += 1;
     }
 
+    // Determine initial wallpaper: either explicit CLI argument, or the persisted last wallpaper
     let mut initial_url = None;
     if let Some(path_str) = config_path {
         let url = resolve_url(&path_str)?;
         webview.load_uri(&url);
+        save_last_wallpaper(&url);
         initial_url = Some(url);
+    } else if let Some(saved_url) = load_last_wallpaper() {
+        webview.load_uri(&saved_url);
+        initial_url = Some(saved_url);
     }
 
     let last_url = Rc::new(RefCell::new(initial_url));
@@ -407,9 +574,11 @@ fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
             if let Some(context) = webview_clone.web_context() {
                 context.clear_cache();
             }
+            save_last_wallpaper(target_url);
             *last_url_clone.borrow_mut() = Some(target_url.to_string());
             webview_clone.load_uri(target_url);
         } else {
+            save_last_wallpaper(&msg);
             *last_url_clone.borrow_mut() = Some(msg.clone());
             webview_clone.load_uri(&msg);
         }
@@ -481,5 +650,21 @@ mod tests {
             resolved,
             format!("file://{}/Cargo.toml", current_dir.to_str().unwrap())
         );
+    }
+
+    #[test]
+    fn test_wallpaper_persistence_roundtrip() {
+        let dir = std::env::temp_dir().join(format!("vellum-test-state-{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&dir);
+        let file = dir.join("last_wallpaper");
+
+        // Write test URL
+        let url = "file:///etc/hosts";
+        std::fs::write(&file, url.as_bytes()).unwrap();
+
+        let read_back = std::fs::read_to_string(&file).unwrap();
+        assert_eq!(read_back, url);
+
+        let _ = std::fs::remove_dir_all(&dir);
     }
 }
