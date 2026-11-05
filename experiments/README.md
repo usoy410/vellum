@@ -22,3 +22,8 @@ Reference static scene: version 1, 1920x1080 canvas, contain scaling, background
 #142438, one preloaded 128x128 alpha texture at (256,256), no periodic frames,
 bounded square hit region; active variant moves x by 128*sin(elapsed_seconds)
 at at most 30 Hz. This is a specification, not an accepted production schema.
+
+For real desktop acceptance and process-tree sampling, use
+[the HTML baseline procedure](../docs/HTML_BASELINE.md) and
+`tools/desktop_baseline.py`. The older cloud-smoke.py remains a historical,
+parent-only feasibility probe; do not use it for service-level comparisons.

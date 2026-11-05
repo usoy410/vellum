@@ -11,3 +11,6 @@
 
 # OS-specific files
 .DS_Store
+
+# Python test and measurement helpers
+__pycache__/
