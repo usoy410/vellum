@@ -69,3 +69,9 @@ outline and `click delivered` log. Never run synthetic input against the user's
 normal desktop. Wayland acceptance must use compositor-delivered real input.
 GTK4 prints the selected renderer type, so a Cairo run cannot be mistaken for
 GPU-accelerated GSK. No browser code is included in either native spike.
+
+## Native Wayland layer-shell spike
+
+See [LAYER_SHELL.md](LAYER_SHELL.md) for the multi-output GTK3 native prototype,
+private headless Sway tests, and explicit limits on compositor support claims.
+This advances protocol/input validation beyond the earlier Xvfb experiments.
