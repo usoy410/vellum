@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-05",
+  "status": "passed",
+  "scope": "isolated headless Sway functional integration; not Niri/Hyprland certification",
+  "environment": {
+    "distro": "Debian 13 x86_64",
+    "kernel": "6.18.57",
+    "sway": "1.10.1",
+    "wlroots": "0.18.2",
+    "renderer": "pixman",
+    "gtk": "3.24.49",
+    "gtk_layer_shell": "0.9.0",
+    "outputs": [
+      "1920x1080",
+      "1280x720"
+    ]
+  },
+  "tests_passed": 3,
+  "tests_skipped": 0,
+  "binary_sha256": "481c6d91659ea541795f264cc1663ff43032d7ace78c39d3ffceee8f25ef61c9",
+  "protocol_fixture_sha256": "3ff6d540be0bc5228195bf072bde42117ea17945a5c2061add5d3cf97d6bb524",
+  "checks": [
+    "background layer, all anchors, no reserved area, keyboard mode none",
+    "screenshot pixels and click feedback",
+    "covering application consumes click",
+    "exposed background click preserves app keyboard focus",
+    "scale-2 logical configure and hit testing",
+    "output disable/re-enable and rendered content",
+    "static idle damage unchanged",
+    "no WebKit mappings",
+    "animated output removal",
+    "SIGTERM cleanup",
+    "no fallback on missing Wayland display"
+  ],
+  "not_tested": [
+    "Niri",
+    "Hyprland",
+    "Plasma",
+    "GNOME",
+    "hardware GPU/power",
+    "physical hotplug",
+    "fractional scaling",
+    "long-run leakage",
+    "suspend/resume",
+    "compositor restart",
+    "production HTML rendering"
+  ],
+  "repeat_validation": "Final suite passed three consecutive runs (3 tests per run, none skipped), after correcting presentation/handoff synchronization in tests.",
+  "test_harness_corrections": [
+    "wait for initial and click pixels instead of configure/click callbacks",
+    "wait for pointer leave and covering-window pixels before occlusion clicks",
+    "wait for floating-window move presentation before exposed-background clicks"
+  ]
+}
