@@ -27,3 +27,45 @@ For real desktop acceptance and process-tree sampling, use
 [the HTML baseline procedure](../docs/HTML_BASELINE.md) and
 `tools/desktop_baseline.py`. The older cloud-smoke.py remains a historical,
 parent-only feasibility probe; do not use it for service-level comparisons.
+
+## GTK4/GSK comparison
+
+`renderer-gtk4.c` is a GtkWidget snapshot implementation: a background color node,
+a cached GdkMemoryTexture, and bounded pointer/click state. It schedules no timer
+in static mode. Both native spikes now use a 34 ms animation interval (at most
+29.42 timer callbacks/second, not a claim about presentation rate). The former
+33 ms interval could exceed the 30 FPS cap. These remain ordinary windows.
+GTK4 is an optional experiment dependency, not a production dependency.
+
+Build from the repo root with GTK3 and GTK4 development packages installed:
+
+```sh
+sh experiments/build-native.sh /tmp/vellum-native-bin
+```
+
+Run on a dedicated test display; keep the pointer outside the sprite during
+resource measurements. For a software-renderer control under Xvfb, explicitly
+set `GDK_BACKEND=x11 GSK_RENDERER=cairo GTK_A11Y=none`. Do not reuse those settings
+as GPU/Wayland benchmark settings. Use a metadata file as described in
+[HTML baseline](../docs/HTML_BASELINE.md):
+
+```sh
+python3 experiments/compare_native.py \
+  --gtk3 /tmp/vellum-native-bin/gtk3 --gtk4 /tmp/vellum-native-bin/gtk4 \
+  --metadata /tmp/vellum-host.json --output /tmp/vellum-native-runs
+```
+
+The runner executes five runs per backend/workload in seeded shuffled order;
+10 s warmup, 60 s measurement by default. It records binary hashes, order,
+renderer settings, per-process samples and logs. Existing output directories
+are rejected; failed launches/runs remain incomplete. It stops only the child
+it launched. Run `python3 -m unittest discover -s tests -p test_native_comparison.py`
+for orchestration tests (dummy processes; not rendering tests).
+
+Validate the rendered image and click feedback separately before benchmarking.
+On an isolated Xvfb server, `import -window root screenshot.png` captures the
+image and `xdotool mousemove 300 300 click 1` tests the sprite; inspect the gold
+outline and `click delivered` log. Never run synthetic input against the user's
+normal desktop. Wayland acceptance must use compositor-delivered real input.
+GTK4 prints the selected renderer type, so a Cairo run cannot be mistaken for
+GPU-accelerated GSK. No browser code is included in either native spike.

@@ -69,3 +69,21 @@ windows exercise only delivered pointer events, never global input. Exposed
 background behavior, focus/workspace and layer-shell require Niri/Hyprland/Sway
 and separate Plasma tests. GNOME integration remains a separate research task.
 Revert this research commit to remove experiments without affecting HTML support.
+
+## Target priority clarified by owner
+
+First release targets Niri, Hyprland and comparable layer-shell-capable Wayland
+compositors. Test each explicitly: background placement, output changes/scaling,
+exposed-desktop hit regions and no keyboard focus stealing. KDE Plasma is a
+later separate compatibility target; GNOME is a future integration spike, not
+a reason to delay or complicate the first backend. X11 experiments are laboratory
+checks only, not the primary product target.
+
+Protocol evidence checked 2026-11-05:
+[Layer Shell keyboard interactivity](https://github.com/swaywm/wlr-protocols/blob/master/unstable/wlr-layer-shell-unstable-v1.xml)
+defines `none` as never accepting keyboard focus while permitting non-keyboard
+interaction. Pointer input must still come from the compositor; do not add global
+input interception. [gtk4-layer-shell's supported desktops](https://github.com/wmww/gtk4-layer-shell#supported-desktops)
+include supported wlroots/Smithay compositors and Plasma, but exclude GNOME
+Wayland. This is library/protocol documentation, not Vellum validation. GNOME
+will need its own supported Shell integration investigation.

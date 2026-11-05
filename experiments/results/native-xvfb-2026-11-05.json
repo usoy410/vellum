@@ -1,0 +1,1797 @@
+{
+  "manifest": {
+    "status": "sampling_completed_not_desktop_acceptance",
+    "seed": 20261105,
+    "schedule": [
+      [
+        "gtk4",
+        "animated",
+        0
+      ],
+      [
+        "gtk3",
+        "static",
+        0
+      ],
+      [
+        "gtk4",
+        "static",
+        1
+      ],
+      [
+        "gtk3",
+        "animated",
+        0
+      ],
+      [
+        "gtk4",
+        "static",
+        2
+      ],
+      [
+        "gtk3",
+        "animated",
+        2
+      ],
+      [
+        "gtk3",
+        "animated",
+        1
+      ],
+      [
+        "gtk4",
+        "static",
+        0
+      ],
+      [
+        "gtk3",
+        "static",
+        1
+      ],
+      [
+        "gtk4",
+        "animated",
+        2
+      ],
+      [
+        "gtk4",
+        "animated",
+        1
+      ],
+      [
+        "gtk3",
+        "static",
+        2
+      ]
+    ],
+    "binary_sha256": {
+      "gtk3": "ca795c873172310aa12298fef6a3453cb28cd623dd188a464ff90ba52b1a59e2",
+      "gtk4": "936c0f39aede4f9fe41ff4bc53b2027ab40b55e27c3af921d84594e361252019"
+    },
+    "display_settings": {
+      "GDK_BACKEND": "x11",
+      "GSK_RENDERER": "cairo",
+      "GTK_A11Y": "none"
+    },
+    "completed": [
+      "gtk4-animated-1",
+      "gtk3-static-1",
+      "gtk4-static-2",
+      "gtk3-animated-1",
+      "gtk4-static-3",
+      "gtk3-animated-3",
+      "gtk3-animated-2",
+      "gtk4-static-1",
+      "gtk3-static-2",
+      "gtk4-animated-3",
+      "gtk4-animated-2",
+      "gtk3-static-3"
+    ]
+  },
+  "runs": {
+    "gtk3-static-1": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:47:36.188132+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10543.216664971,
+            "processes": [
+              {
+                "pid": 21186,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1054016,
+                "rss_kib": 41996,
+                "pss_kib": 29807
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          },
+          {
+            "monotonic_seconds": 10544.230668595,
+            "processes": [
+              {
+                "pid": 21186,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1054016,
+                "rss_kib": 41996,
+                "pss_kib": 29807
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          },
+          {
+            "monotonic_seconds": 10545.233985081,
+            "processes": [
+              {
+                "pid": 21186,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1054016,
+                "rss_kib": 41996,
+                "pss_kib": 29807
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          },
+          {
+            "monotonic_seconds": 10546.247576899,
+            "processes": [
+              {
+                "pid": 21186,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1054016,
+                "rss_kib": 41996,
+                "pss_kib": 29807
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          },
+          {
+            "monotonic_seconds": 10547.216895778,
+            "processes": [
+              {
+                "pid": 21186,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1054016,
+                "rss_kib": 41996,
+                "pss_kib": 29807
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10542.213745658,
+          "processes": [
+            {
+              "pid": 21186,
+              "ppid": 21164,
+              "ticks": 8,
+              "start": 1054016,
+              "rss_kib": 41996,
+              "pss_kib": 29807
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk3-static-2": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:25.707645+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10592.72759384,
+            "processes": [
+              {
+                "pid": 21388,
+                "ppid": 21164,
+                "ticks": 3,
+                "start": 1058968,
+                "rss_kib": 12452,
+                "pss_kib": 9710
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9710
+            }
+          },
+          {
+            "monotonic_seconds": 10593.72975586,
+            "processes": [
+              {
+                "pid": 21388,
+                "ppid": 21164,
+                "ticks": 3,
+                "start": 1058968,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10594.736270922,
+            "processes": [
+              {
+                "pid": 21388,
+                "ppid": 21164,
+                "ticks": 3,
+                "start": 1058968,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10595.739300602,
+            "processes": [
+              {
+                "pid": 21388,
+                "ppid": 21164,
+                "ticks": 3,
+                "start": 1058968,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10596.734833238,
+            "processes": [
+              {
+                "pid": 21388,
+                "ppid": 21164,
+                "ticks": 3,
+                "start": 1058968,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10591.725777902,
+          "processes": [
+            {
+              "pid": 21388,
+              "ppid": 21164,
+              "ticks": 3,
+              "start": 1058968,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk3-static-3": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:46.949965+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10613.974588405,
+            "processes": [
+              {
+                "pid": 21657,
+                "ppid": 21164,
+                "ticks": 5,
+                "start": 1061090,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10614.986396389,
+            "processes": [
+              {
+                "pid": 21657,
+                "ppid": 21164,
+                "ticks": 5,
+                "start": 1061090,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10615.990329852,
+            "processes": [
+              {
+                "pid": 21657,
+                "ppid": 21164,
+                "ticks": 5,
+                "start": 1061090,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10617.002243564,
+            "processes": [
+              {
+                "pid": 21657,
+                "ppid": 21164,
+                "ticks": 5,
+                "start": 1061090,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          },
+          {
+            "monotonic_seconds": 10617.974139517,
+            "processes": [
+              {
+                "pid": 21657,
+                "ppid": 21164,
+                "ticks": 5,
+                "start": 1061090,
+                "rss_kib": 12452,
+                "pss_kib": 9742
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10612.97163561,
+          "processes": [
+            {
+              "pid": 21657,
+              "ppid": 21164,
+              "ticks": 5,
+              "start": 1061090,
+              "rss_kib": 12452,
+              "pss_kib": 9742
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk3-animated-1": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:47:50.348347+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10557.367303167,
+            "processes": [
+              {
+                "pid": 21229,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1055432,
+                "rss_kib": 12484,
+                "pss_kib": 9769
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9981106095533084,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          },
+          {
+            "monotonic_seconds": 10558.370678274,
+            "processes": [
+              {
+                "pid": 21229,
+                "ppid": 21164,
+                "ticks": 9,
+                "start": 1055432,
+                "rss_kib": 12484,
+                "pss_kib": 9769
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9966362460309163,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          },
+          {
+            "monotonic_seconds": 10559.373081054,
+            "processes": [
+              {
+                "pid": 21229,
+                "ppid": 21164,
+                "ticks": 10,
+                "start": 1055432,
+                "rss_kib": 12484,
+                "pss_kib": 9769
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9976029795119696,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          },
+          {
+            "monotonic_seconds": 10560.375154669,
+            "processes": [
+              {
+                "pid": 21229,
+                "ppid": 21164,
+                "ticks": 11,
+                "start": 1055432,
+                "rss_kib": 12484,
+                "pss_kib": 9769
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9979306759813528,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          },
+          {
+            "monotonic_seconds": 10561.368352359,
+            "processes": [
+              {
+                "pid": 21229,
+                "ppid": 21164,
+                "ticks": 12,
+                "start": 1055432,
+                "rss_kib": 12484,
+                "pss_kib": 9769
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.006848898328917,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10556.3654102,
+          "processes": [
+            {
+              "pid": 21229,
+              "ppid": 21164,
+              "ticks": 7,
+              "start": 1055432,
+              "rss_kib": 12484,
+              "pss_kib": 9769
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk3-animated-2": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:11.565053+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10578.590735485,
+            "processes": [
+              {
+                "pid": 21254,
+                "ppid": 21164,
+                "ticks": 9,
+                "start": 1057552,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.9885253773692033,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10579.592806626,
+            "processes": [
+              {
+                "pid": 21254,
+                "ppid": 21164,
+                "ticks": 10,
+                "start": 1057552,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9979331397592252,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10580.596343221,
+            "processes": [
+              {
+                "pid": 21254,
+                "ppid": 21164,
+                "ticks": 11,
+                "start": 1057552,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9964758684272185,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10581.598303649,
+            "processes": [
+              {
+                "pid": 21254,
+                "ppid": 21164,
+                "ticks": 12,
+                "start": 1057552,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9980434077576879,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10582.58749422,
+            "processes": [
+              {
+                "pid": 21254,
+                "ppid": 21164,
+                "ticks": 13,
+                "start": 1057552,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.0109275495701942,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10577.584965067,
+          "processes": [
+            {
+              "pid": 21254,
+              "ppid": 21164,
+              "ticks": 7,
+              "start": 1057552,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk3-animated-3": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:04.486108+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk3 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10571.505237045,
+            "processes": [
+              {
+                "pid": 21252,
+                "ppid": 21164,
+                "ticks": 7,
+                "start": 1056845,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9972196807289498,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10572.508125659,
+            "processes": [
+              {
+                "pid": 21252,
+                "ppid": 21164,
+                "ticks": 8,
+                "start": 1056845,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.997119706056644,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10573.510585394,
+            "processes": [
+              {
+                "pid": 21252,
+                "ppid": 21164,
+                "ticks": 9,
+                "start": 1056845,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9975463004504326,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10574.513489209,
+            "processes": [
+              {
+                "pid": 21252,
+                "ppid": 21164,
+                "ticks": 10,
+                "start": 1056845,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9971045927265371,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          },
+          {
+            "monotonic_seconds": 10575.504536752,
+            "processes": [
+              {
+                "pid": 21252,
+                "ppid": 21164,
+                "ticks": 11,
+                "start": 1056845,
+                "rss_kib": 12488,
+                "pss_kib": 9773
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.0090333274770305,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10570.502448974,
+          "processes": [
+            {
+              "pid": 21252,
+              "ppid": 21164,
+              "ticks": 6,
+              "start": 1056845,
+              "rss_kib": 12488,
+              "pss_kib": 9773
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": ""
+    },
+    "gtk4-static-1": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:18.632903+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10585.657490293,
+            "processes": [
+              {
+                "pid": 21256,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1058260,
+                "rss_kib": 59216,
+                "pss_kib": 47393
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59216,
+              "pss_kib": 47393
+            }
+          },
+          {
+            "monotonic_seconds": 10586.666178984,
+            "processes": [
+              {
+                "pid": 21256,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1058260,
+                "rss_kib": 59216,
+                "pss_kib": 47363
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59216,
+              "pss_kib": 47363
+            }
+          },
+          {
+            "monotonic_seconds": 10587.671830266,
+            "processes": [
+              {
+                "pid": 21256,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1058260,
+                "rss_kib": 59216,
+                "pss_kib": 47348
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59216,
+              "pss_kib": 47348
+            }
+          },
+          {
+            "monotonic_seconds": 10588.677993442,
+            "processes": [
+              {
+                "pid": 21256,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1058260,
+                "rss_kib": 59216,
+                "pss_kib": 47393
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59216,
+              "pss_kib": 47393
+            }
+          },
+          {
+            "monotonic_seconds": 10589.665337224,
+            "processes": [
+              {
+                "pid": 21256,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1058260,
+                "rss_kib": 59216,
+                "pss_kib": 47393
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59216,
+              "pss_kib": 47393
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10584.654288011,
+          "processes": [
+            {
+              "pid": 21256,
+              "ppid": 21164,
+              "ticks": 22,
+              "start": 1058260,
+              "rss_kib": 59216,
+              "pss_kib": 47393
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    },
+    "gtk4-static-2": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:47:43.278714+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10550.30645333,
+            "processes": [
+              {
+                "pid": 21208,
+                "ppid": 21164,
+                "ticks": 15,
+                "start": 1054723,
+                "rss_kib": 59356,
+                "pss_kib": 47535
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          },
+          {
+            "monotonic_seconds": 10551.309683609,
+            "processes": [
+              {
+                "pid": 21208,
+                "ppid": 21164,
+                "ticks": 15,
+                "start": 1054723,
+                "rss_kib": 59356,
+                "pss_kib": 47535
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          },
+          {
+            "monotonic_seconds": 10552.325168782,
+            "processes": [
+              {
+                "pid": 21208,
+                "ppid": 21164,
+                "ticks": 15,
+                "start": 1054723,
+                "rss_kib": 59356,
+                "pss_kib": 47535
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          },
+          {
+            "monotonic_seconds": 10553.328685872,
+            "processes": [
+              {
+                "pid": 21208,
+                "ppid": 21164,
+                "ticks": 15,
+                "start": 1054723,
+                "rss_kib": 59356,
+                "pss_kib": 47535
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          },
+          {
+            "monotonic_seconds": 10554.303436283,
+            "processes": [
+              {
+                "pid": 21208,
+                "ppid": 21164,
+                "ticks": 15,
+                "start": 1054723,
+                "rss_kib": 59356,
+                "pss_kib": 47535
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10549.29753542,
+          "processes": [
+            {
+              "pid": 21208,
+              "ppid": 21164,
+              "ticks": 15,
+              "start": 1054723,
+              "rss_kib": 59356,
+              "pss_kib": 47535
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    },
+    "gtk4-static-3": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:47:57.408014+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 static; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10564.431604413,
+            "processes": [
+              {
+                "pid": 21231,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1056137,
+                "rss_kib": 59400,
+                "pss_kib": 47577
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          },
+          {
+            "monotonic_seconds": 10565.434375353,
+            "processes": [
+              {
+                "pid": 21231,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1056137,
+                "rss_kib": 59400,
+                "pss_kib": 47577
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          },
+          {
+            "monotonic_seconds": 10566.439657709,
+            "processes": [
+              {
+                "pid": 21231,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1056137,
+                "rss_kib": 59400,
+                "pss_kib": 47577
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          },
+          {
+            "monotonic_seconds": 10567.443142178,
+            "processes": [
+              {
+                "pid": 21231,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1056137,
+                "rss_kib": 59400,
+                "pss_kib": 47577
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          },
+          {
+            "monotonic_seconds": 10568.431775248,
+            "processes": [
+              {
+                "pid": 21231,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1056137,
+                "rss_kib": 59400,
+                "pss_kib": 47577
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.0,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10563.426530403,
+          "processes": [
+            {
+              "pid": 21231,
+              "ppid": 21164,
+              "ticks": 22,
+              "start": 1056137,
+              "rss_kib": 59400,
+              "pss_kib": 47577
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    },
+    "gtk4-animated-1": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:47:29.118362+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10536.139535751,
+            "processes": [
+              {
+                "pid": 21165,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1053309,
+                "rss_kib": 59804,
+                "pss_kib": 49141
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9956991839152839,
+              "rss_kib": 59804,
+              "pss_kib": 49141
+            }
+          },
+          {
+            "monotonic_seconds": 10537.143364197,
+            "processes": [
+              {
+                "pid": 21165,
+                "ppid": 21164,
+                "ticks": 23,
+                "start": 1053309,
+                "rss_kib": 59812,
+                "pss_kib": 49149
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9961861550986344,
+              "rss_kib": 59812,
+              "pss_kib": 49149
+            }
+          },
+          {
+            "monotonic_seconds": 10538.148474408,
+            "processes": [
+              {
+                "pid": 21165,
+                "ppid": 21164,
+                "ticks": 25,
+                "start": 1053309,
+                "rss_kib": 59812,
+                "pss_kib": 49149
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.9898315409691814,
+              "rss_kib": 59812,
+              "pss_kib": 49149
+            }
+          },
+          {
+            "monotonic_seconds": 10539.152103887,
+            "processes": [
+              {
+                "pid": 21165,
+                "ppid": 21164,
+                "ticks": 26,
+                "start": 1053309,
+                "rss_kib": 59812,
+                "pss_kib": 49149
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9963836464803061,
+              "rss_kib": 59812,
+              "pss_kib": 49149
+            }
+          },
+          {
+            "monotonic_seconds": 10540.141039245,
+            "processes": [
+              {
+                "pid": 21165,
+                "ppid": 21164,
+                "ticks": 27,
+                "start": 1053309,
+                "rss_kib": 59812,
+                "pss_kib": 49149
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.0111884380615257,
+              "rss_kib": 59812,
+              "pss_kib": 49149
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10535.135216358,
+          "processes": [
+            {
+              "pid": 21165,
+              "ppid": 21164,
+              "ticks": 21,
+              "start": 1053309,
+              "rss_kib": 59804,
+              "pss_kib": 49141
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    },
+    "gtk4-animated-2": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:39.847235+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10606.874821525,
+            "processes": [
+              {
+                "pid": 21636,
+                "ppid": 21164,
+                "ticks": 58,
+                "start": 1060381,
+                "rss_kib": 59668,
+                "pss_kib": 47810
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 2.9880807520600396,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          },
+          {
+            "monotonic_seconds": 10607.878219539,
+            "processes": [
+              {
+                "pid": 21636,
+                "ppid": 21164,
+                "ticks": 59,
+                "start": 1060381,
+                "rss_kib": 59668,
+                "pss_kib": 47810
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9966134933971609,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          },
+          {
+            "monotonic_seconds": 10608.882278065,
+            "processes": [
+              {
+                "pid": 21636,
+                "ppid": 21164,
+                "ticks": 61,
+                "start": 1060381,
+                "rss_kib": 59668,
+                "pss_kib": 47810
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.9919157581034477,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          },
+          {
+            "monotonic_seconds": 10609.885541779,
+            "processes": [
+              {
+                "pid": 21636,
+                "ppid": 21164,
+                "ticks": 62,
+                "start": 1060381,
+                "rss_kib": 59668,
+                "pss_kib": 47810
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9967469031783069,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          },
+          {
+            "monotonic_seconds": 10610.881169845,
+            "processes": [
+              {
+                "pid": 21636,
+                "ppid": 21164,
+                "ticks": 65,
+                "start": 1060381,
+                "rss_kib": 59668,
+                "pss_kib": 47810
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 3.013173395212041,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10605.870832594,
+          "processes": [
+            {
+              "pid": 21636,
+              "ppid": 21164,
+              "ticks": 55,
+              "start": 1060381,
+              "rss_kib": 59668,
+              "pss_kib": 47810
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    },
+    "gtk4-animated-3": {
+      "report": {
+        "schema_version": 1,
+        "created_utc": "2026-11-05T04:48:32.773793+00:00",
+        "kernel": "6.18.57",
+        "machine": "x86_64",
+        "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.6\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+        "metadata": {
+          "compositor": "none; isolated Xvfb :95",
+          "outputs": "1920x1080x24, scale 1; physical refresh not applicable",
+          "gpu_driver": "no /dev/dri; GTK4 GskCairoRenderer, GTK3 Cairo",
+          "power_mode": "cloud host, no power measurement",
+          "workload": "gtk4 animated; 1920x1080 window, preloaded 128x128 RGBA texture",
+          "binary_revision": "c72518a plus GTK4 experiment; manifest stores binary SHA256; cc -O2; GTK3 3.24.49 / GTK4 4.18.6"
+        },
+        "parameters": {
+          "warmup_seconds": 2.0,
+          "duration_seconds": 5.0,
+          "interval_seconds": 1.0
+        },
+        "scope": "observed root and descendants; not service cgroup or GPU memory",
+        "acceptance": "not assessed; complete desktop checklist separately",
+        "status": "sampling_completed",
+        "samples": [
+          {
+            "monotonic_seconds": 10599.795650238,
+            "processes": [
+              {
+                "pid": 21548,
+                "ppid": 21164,
+                "ticks": 21,
+                "start": 1059674,
+                "rss_kib": 59316,
+                "pss_kib": 47462
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.99229459941338,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          },
+          {
+            "monotonic_seconds": 10600.800027189,
+            "processes": [
+              {
+                "pid": 21548,
+                "ppid": 21164,
+                "ticks": 22,
+                "start": 1059674,
+                "rss_kib": 59316,
+                "pss_kib": 47462
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 0.9956421232137964,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          },
+          {
+            "monotonic_seconds": 10601.802861156,
+            "processes": [
+              {
+                "pid": 21548,
+                "ppid": 21164,
+                "ticks": 24,
+                "start": 1059674,
+                "rss_kib": 59316,
+                "pss_kib": 47462
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.9943480833438998,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          },
+          {
+            "monotonic_seconds": 10602.809598853,
+            "processes": [
+              {
+                "pid": 21548,
+                "ppid": 21164,
+                "ticks": 26,
+                "start": 1059674,
+                "rss_kib": 59316,
+                "pss_kib": 47462
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 1.9866147914791714,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          },
+          {
+            "monotonic_seconds": 10603.795252703,
+            "processes": [
+              {
+                "pid": 21548,
+                "ppid": 21164,
+                "ticks": 28,
+                "start": 1059674,
+                "rss_kib": 59316,
+                "pss_kib": 47462
+              }
+            ],
+            "proc_scan_errors": 0,
+            "aggregate": {
+              "tree_changed": false,
+              "cpu_one_core_percent": 2.029109915212303,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          }
+        ],
+        "initial_sample": {
+          "monotonic_seconds": 10598.791782637,
+          "processes": [
+            {
+              "pid": 21548,
+              "ppid": 21164,
+              "ticks": 19,
+              "start": 1059674,
+              "rss_kib": 59316,
+              "pss_kib": 47462
+            }
+          ],
+          "proc_scan_errors": 0
+        }
+      },
+      "log": "renderer=GskCairoRenderer\n"
+    }
+  }
+}
