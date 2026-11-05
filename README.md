@@ -51,21 +51,46 @@ Vellum is designed to be easily distributed. We provide:
 ## 🎮 Usage
 
 ### Manage the Daemon
-Vellum runs as a background service. Manage it with `systemctl`:
+Vellum runs as a background service. Manage it with `systemctl` or directly via `vellum`:
 ```bash
 systemctl --user start vellum.service    # Start
 systemctl --user stop vellum.service     # Stop
 systemctl --user status vellum.service   # Check status
+vellum restart                           # Convenient daemon restart
 ```
 
 ### Change Wallpaper
-Update your wallpaper instantly using the `set` command:
+Update your wallpaper instantly using either direct path syntax or the `set` command:
 ```bash
-# Local file
+# Direct syntax (auto-sends to running daemon, or starts daemon if not running)
+vellum ~/htmlwall/index.html
+
+# Local file via set
 vellum set ~/wallpapers/beach.html
 
 # Remote URL
 vellum set https://google.com
+```
+
+### Refresh & Clear Cache
+When editing HTML, CSS, or JavaScript for your wallpaper, refresh immediately without restarting or retyping long paths:
+```bash
+# Reload current wallpaper and bypass WebKit cache
+vellum refresh
+vellum -r
+
+# Explicitly purge cache and reload
+vellum refresh --cache
+vellum refresh -c
+
+# Update wallpaper path and refresh in one command
+vellum refresh ~/htmlwall/index.html
+```
+
+### Help & Options
+```bash
+vellum --help     # Display CLI help anytime (even if another instance is running)
+vellum --version  # Display version information
 ```
 
 Vellum is released under the [MIT License](LICENSE).

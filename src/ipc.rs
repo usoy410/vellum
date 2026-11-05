@@ -15,6 +15,14 @@ pub fn socket_path() -> PathBuf {
     PathBuf::from(format!("/run/user/{}/vellum.sock", unsafe { libc::getuid() }))
 }
 
+/// Checks whether an active Vellum daemon instance is listening on the IPC socket.
+///
+/// Returns `true` if a connection can be established, or `false` if the socket
+/// does not exist or points to a stale, refused connection.
+pub fn is_daemon_running() -> bool {
+    UnixStream::connect(socket_path()).is_ok()
+}
+
 pub struct SocketOwner {
     path: PathBuf,
     identity: (u64, u64),
