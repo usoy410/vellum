@@ -2,7 +2,6 @@ use gtk::prelude::*;
 use webkit2gtk::{WebViewExt, SettingsExt};
 use gtk_layer_shell::LayerShell;
 use gdk::RGBA;
-use std::process::Command;
 use std::os::unix::net::{UnixListener, UnixStream};
 use std::io::{Read, Write};
 use std::thread;
@@ -10,21 +9,6 @@ use std::thread;
 fn get_socket_path() -> String {
     let uid = unsafe { libc::getuid() };
     format!("/run/user/{}/vellum.sock", uid)
-}
-
-fn kill_competitors() {
-    let runners = [
-        "swww",
-        "swww-daemon",
-        "hanabi",
-        "hidamari",
-        "linux-wallpaperengine",
-        "awww",
-    ];
-    for runner in runners {
-        // Use pkill to terminate other runners. Silent failure if not found.
-        let _ = Command::new("pkill").arg("-x").arg(runner).status();
-    }
 }
 
 fn run_client(url: String) -> Result<(), Box<dyn std::error::Error>> {
@@ -54,9 +38,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 
 fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
-    // Terminate competing runners first
-    kill_competitors();
-
     // Initialize GTK
     gtk::init()?;
 

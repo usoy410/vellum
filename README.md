@@ -72,3 +72,15 @@ Vellum is released under the [MIT License](LICENSE).
 
 ---
 Created with ❤️ by **Arjay Alforte**
+
+### Startup and coexistence
+
+Vellum leaves other wallpaper applications running. If backgrounds conflict,
+stop the other application explicitly using its own controls before starting
+Vellum. HTML/URL loading and `vellum set` are unchanged.
+
+The Makefile uses only the systemd user service for automatic startup. It no
+longer installs an XDG autostart entry. If an earlier installation created
+`~/.config/autostart/vellum.desktop` or `/etc/xdg/autostart/vellum.desktop`, inspect
+and remove that Vellum entry yourself to avoid duplicate startup. Installation
+and uninstallation do not delete existing desktop entries.
