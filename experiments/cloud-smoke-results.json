@@ -1,0 +1,77 @@
+[
+  {
+    "candidate": "native-static",
+    "runs": [
+      {
+        "cpu_one_core_percent": 0.0,
+        "memory_kib": {
+          "Rss": 41988,
+          "Pss": 29811
+        },
+        "scope": "parent only"
+      },
+      {
+        "cpu_one_core_percent": 0.0,
+        "memory_kib": {
+          "Rss": 12456,
+          "Pss": 9757
+        },
+        "scope": "parent only"
+      },
+      {
+        "cpu_one_core_percent": 0.0,
+        "memory_kib": {
+          "Rss": 12448,
+          "Pss": 9749
+        },
+        "scope": "parent only"
+      }
+    ]
+  },
+  {
+    "candidate": "native-30hz",
+    "runs": [
+      {
+        "cpu_one_core_percent": 2.2997414613239764,
+        "memory_kib": {
+          "Rss": 12492,
+          "Pss": 9789
+        },
+        "scope": "parent only"
+      },
+      {
+        "cpu_one_core_percent": 10.989427269832126,
+        "memory_kib": {
+          "Rss": 12492,
+          "Pss": 9789
+        },
+        "scope": "parent only"
+      },
+      {
+        "cpu_one_core_percent": 1.3330323284126868,
+        "memory_kib": {
+          "Rss": 12492,
+          "Pss": 9789
+        },
+        "scope": "parent only"
+      }
+    ]
+  },
+  {
+    "candidate": "web-static",
+    "runs": [
+      {
+        "exit": -5,
+        "error": "\n** (web-poc:14145): ERROR **: 03:24:12.144: Unable to spawn a new child process: Failed to spawn child process \u201c/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess\u201d (No such file or directory)\n"
+      },
+      {
+        "exit": -5,
+        "error": "\n** (web-poc:14178): ERROR **: 03:24:12.684: Unable to spawn a new child process: Failed to spawn child process \u201c/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess\u201d (No such file or directory)\n"
+      },
+      {
+        "exit": -5,
+        "error": "\n** (web-poc:14211): ERROR **: 03:24:13.727: Unable to spawn a new child process: Failed to spawn child process \u201c/usr/lib/x86_64-linux-gnu/webkit2gtk-4.1/WebKitNetworkProcess\u201d (No such file or directory)\n"
+      }
+    ]
+  }
+]
