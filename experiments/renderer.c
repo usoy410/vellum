@@ -52,7 +52,7 @@ int main(int argc,char **argv) {
     g_signal_connect(content,"button-press-event",G_CALLBACK(pointer),NULL);
     g_signal_connect(content,"leave-notify-event",G_CALLBACK(pointer),NULL);
     started=g_get_monotonic_time();
-    if(argc==2 && g_str_equal(argv[1],"--animate")) g_timeout_add(33,tick,content);
+    if(argc==2 && g_str_equal(argv[1],"--animate")) g_timeout_add(34,tick,content);
 #endif
     gtk_container_add(GTK_CONTAINER(window),content);
     gtk_widget_show_all(window); gtk_main();
