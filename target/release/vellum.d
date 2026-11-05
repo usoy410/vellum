@@ -1,1 +1,1 @@
-/home/usoy/Documents/GitHub/vellum/target/release/vellum: /home/usoy/Documents/GitHub/vellum/src/main.rs
+/home/usoy/vellum/target/release/vellum: /home/usoy/vellum/src/ipc.rs /home/usoy/vellum/src/main.rs
