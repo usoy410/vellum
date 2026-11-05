@@ -84,3 +84,24 @@ longer installs an XDG autostart entry. If an earlier installation created
 `~/.config/autostart/vellum.desktop` or `/etc/xdg/autostart/vellum.desktop`, inspect
 and remove that Vellum entry yourself to avoid duplicate startup. Installation
 and uninstallation do not delete existing desktop entries.
+
+### IPC lifecycle
+
+The legacy `vellum set <path-or-url>` protocol remains one UTF-8 URL per Unix
+connection, completed by EOF. Requests are limited to 64 KiB and must finish
+within two seconds; empty, invalid UTF-8 and NUL-containing requests are ignored.
+The client has a two-second write timeout. As before, a successful client write
+is not an acknowledgement that WebKit loaded the page.
+
+The endpoint remains `/run/user/<uid>/vellum.sock`. A persistent adjacent
+`vellum.sock.lock` serializes daemon startup; do not delete that lock file while
+Vellum is running. An active socket (including an older daemon's socket) is
+preserved. Only a refused, owned Unix socket is recovered as stale. Files and
+symlinks at the endpoint are never replaced. Normal exit, SIGINT and SIGTERM
+remove the socket only if its inode still matches this daemon's socket. SIGKILL
+cannot run cleanup; the next startup recovers the stale socket.
+
+Requests are processed serially, so one stalled client can delay later clients
+by up to two seconds. This is local reliability protection, not a guarantee
+against a malicious same-user flood. Runtime directory migration, acknowledged
+commands and queue/backpressure changes are separate follow-up work.

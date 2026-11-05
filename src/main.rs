@@ -1,19 +1,19 @@
+mod ipc;
 use gtk::prelude::*;
 use webkit2gtk::{WebViewExt, SettingsExt};
 use gtk_layer_shell::LayerShell;
 use gdk::RGBA;
-use std::os::unix::net::{UnixListener, UnixStream};
-use std::io::{Read, Write};
+use std::os::unix::net::UnixStream;
+use std::io::Write;
 use std::thread;
 
-fn get_socket_path() -> String {
-    let uid = unsafe { libc::getuid() };
-    format!("/run/user/{}/vellum.sock", uid)
-}
-
 fn run_client(url: String) -> Result<(), Box<dyn std::error::Error>> {
-    let socket_path = get_socket_path();
+    let socket_path = ipc::socket_path();
     let mut stream = UnixStream::connect(socket_path)?;
+    if url.len() > ipc::MAX_REQUEST_BYTES {
+        return Err("wallpaper URL exceeds 64 KiB".into());
+    }
+    stream.set_write_timeout(Some(ipc::REQUEST_TIMEOUT))?;
     stream.write_all(url.as_bytes())?;
     Ok(())
 }
@@ -40,6 +40,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     // Initialize GTK
     gtk::init()?;
+    let (_socket_owner, listener) = ipc::SocketOwner::bind(&ipc::socket_path())?;
 
     // Create a new GTK window
     let window = gtk::Window::new(gtk::WindowType::Toplevel);
@@ -123,19 +124,13 @@ fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
         webview.load_uri(&url);
     }
 
-    // Setup IPC Listener
-    let socket_path = get_socket_path();
-    let _ = std::fs::remove_file(&socket_path); // Remove old socket if exists
-    let listener = UnixListener::bind(&socket_path)?;
-
     let (tx, rx) = glib::MainContext::channel(glib::Priority::default());
     
     thread::spawn(move || {
         for stream in listener.incoming() {
             if let Ok(mut stream) = stream {
-                let mut buffer = String::new();
-                if stream.read_to_string(&mut buffer).is_ok() {
-                    let _ = tx.send(buffer);
+                if let Ok(url) = ipc::read_request(&mut stream, ipc::REQUEST_TIMEOUT) {
+                    if tx.send(url).is_err() { break; }
                 }
             }
         }
@@ -160,7 +155,14 @@ fn run_daemon(args: Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
     window.show_all();
 
     // Start GTK main loop
+    let signals: Vec<_> = [libc::SIGTERM, libc::SIGINT].into_iter().map(|signal| {
+        glib::source::unix_signal_add_local(signal, || {
+            gtk::main_quit();
+            glib::ControlFlow::Continue
+        })
+    }).collect();
     gtk::main();
+    for source in signals { source.remove(); }
 
     Ok(())
 }
