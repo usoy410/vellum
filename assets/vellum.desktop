@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Vellum
+Comment=HTML Wallpaper Runner
+Exec=/usr/bin/vellum
+Terminal=false
+Categories=Utility;
+X-GNOME-Autostart-Phase=Desktop
